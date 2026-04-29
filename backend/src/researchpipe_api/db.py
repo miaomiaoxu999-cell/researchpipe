@@ -180,6 +180,7 @@ async def deals_search(
     amount_min_cny_m: float | None,
     time_range_days: int,
     limit: int,
+    company_name: str | None = None,
 ) -> dict[str, Any]:
     """Search events. time_range_days is inlined as int (no SQL injection — int-validated).
 
@@ -205,6 +206,9 @@ async def deals_search(
     if amount_min_cny_m is not None:
         where.append(f"e.amount >= ${len(params) + 1}::numeric")
         params.append(float(amount_min_cny_m) * 1_000_000)
+    if company_name:
+        where.append(f"e.company_name ILIKE ${len(params) + 1}")
+        params.append(f"%{company_name}%")
 
     where_sql = " AND ".join(where)
     sql = f"""

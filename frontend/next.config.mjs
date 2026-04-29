@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
-const BACKEND = process.env.NEXT_PUBLIC_RP_BACKEND_URL || "http://localhost:3725";
+// Server-side rewrite target — always the internal backend on the same host.
+// Distinct from NEXT_PUBLIC_RP_BACKEND_URL (which is the public URL the browser sees).
+const BACKEND = process.env.RP_BACKEND_INTERNAL_URL || "http://127.0.0.1:3725";
 
 const nextConfig = {
   // Skip ESLint during builds — dev / lint commands still run it.

@@ -74,8 +74,10 @@ async def corpus_search(
         where_clauses.append(f"title ILIKE ${len(params)}")
 
     if broker:
-        params.append(broker)
-        where_clauses.append(f"broker = ${len(params)}")
+        # Partial match — "中信" matches "中信建投", "国" matches all 国-prefix firms.
+        # Escape wildcards so user-provided broker can't scan with %.
+        params.append(f"%{_escape_like(broker)}%")
+        where_clauses.append(f"broker ILIKE ${len(params)}")
 
     if industry:
         # Try alias expansion: if "具身智能" → match any of {"具身智能","机器人",...}
@@ -177,8 +179,8 @@ async def semantic_search(
         params.append(candidates)
         where_clauses.append(f"f.industry_tags && ${len(params)}::text[]")
     if broker:
-        params.append(broker)
-        where_clauses.append(f"f.broker = ${len(params)}")
+        params.append(f"%{_escape_like(broker)}%")
+        where_clauses.append(f"f.broker ILIKE ${len(params)}")
     if week:
         params.append(week)
         where_clauses.append(f"f.week = ${len(params)}")

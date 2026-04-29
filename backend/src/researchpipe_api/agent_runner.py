@@ -28,9 +28,32 @@ from .settings import BAILIAN_API_KEY, BAILIAN_BASE_URL, BAILIAN_MODEL
 
 log = logging.getLogger(__name__)
 
-MAX_ITERATIONS = 5
-MAX_TOOL_CALLS = 10  # hard cap across all iterations to prevent runaway cost
+MAX_ITERATIONS = 8
+MAX_TOOL_CALLS = 14  # hard cap across all iterations to prevent runaway cost
 LLM_TIMEOUT = 60.0
+
+
+async def _force_final_synthesis(messages: list[dict]) -> str:
+    """Force LLM to give final answer with no further tool calls.
+
+    Called when iteration / tool-call budget is exhausted but enough info
+    has been gathered. Avoids returning empty error responses to the user.
+    """
+    msgs = list(messages) + [
+        {
+            "role": "user",
+            "content": (
+                "请基于上面已检索到的信息立刻给出最终答案，不要再调用任何工具。"
+                "如果信息不足，请明确说明缺失部分。"
+            ),
+        }
+    ]
+    try:
+        llm_resp = await _llm_chat(msgs, tools=None)
+        return (llm_resp.get("choices") or [{}])[0].get("message", {}).get("content") or ""
+    except Exception:
+        log.exception("force_final_synthesis failed")
+        return ""
 
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -309,13 +332,18 @@ async def run_agent(user_query: str, *, is_disconnected=None) -> AsyncIterator[d
                 log.info("agent: client disconnected, aborting")
                 return
 
-            # Hard cap on tool calls (cost protection).
+            # Hard cap on tool calls (cost protection). Force final synthesis
+            # so user gets a real answer rather than an opaque error.
             if n_tool_calls >= MAX_TOOL_CALLS:
-                yield {
-                    "event": "error",
-                    "code": "max_tool_calls",
-                    "message": f"Reached MAX_TOOL_CALLS={MAX_TOOL_CALLS}; aborting.",
-                }
+                content = await _force_final_synthesis(messages)
+                if content:
+                    yield {"event": "content", "delta": content}
+                else:
+                    yield {
+                        "event": "error",
+                        "code": "max_tool_calls",
+                        "message": f"Reached MAX_TOOL_CALLS={MAX_TOOL_CALLS}; aborting.",
+                    }
                 break
 
             iteration += 1
@@ -410,12 +438,17 @@ async def run_agent(user_query: str, *, is_disconnected=None) -> AsyncIterator[d
                 )
 
         else:
-            # Loop ended without final content — hit max iterations
-            yield {
-                "event": "error",
-                "code": "max_iterations",
-                "message": f"Agent exceeded {MAX_ITERATIONS} iterations without final answer.",
-            }
+            # Loop ended without final content — force a synthesis so the
+            # user gets an answer based on tool calls already made.
+            content = await _force_final_synthesis(messages)
+            if content:
+                yield {"event": "content", "delta": content}
+            else:
+                yield {
+                    "event": "error",
+                    "code": "max_iterations",
+                    "message": f"Agent exceeded {MAX_ITERATIONS} iterations without final answer.",
+                }
     except Exception as e:
         log.exception("agent loop crashed")
         yield {"event": "error", "code": "agent_crash", "message": "Internal agent error; see server logs."}
