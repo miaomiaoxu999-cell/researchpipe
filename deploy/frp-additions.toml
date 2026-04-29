@@ -1,0 +1,15 @@
+# Append to /etc/frp/frpc.toml on muye@192.168.1.23
+# Then: sudo systemctl restart frpc
+
+# ResearchPipe Frontend (Next.js production) — local :3726 → ali :7786
+# nginx on ali reverse-proxies rp.zgen.xin → 127.0.0.1:7786
+# Frontend's /v1/* and /downloads/* are rewritten to backend localhost:3725 internally.
+[[proxies]]
+name = "researchpipe-frontend"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 3726
+remotePort = 7786
+
+# rpadmin.zgen.xin uses the same frontend port; nginx rewrites the path on aliyun side.
+# (No separate frp tunnel needed for admin.)

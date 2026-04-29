@@ -1,0 +1,21 @@
+[Unit]
+Description=ResearchPipe API (FastAPI)
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=muye
+WorkingDirectory=/home/muye/researchpipe/backend
+Environment="PYTHONPATH=/home/muye/researchpipe/backend/src"
+EnvironmentFile=/home/muye/researchpipe/backend/.env
+ExecStart=/home/muye/researchpipe/backend/.venv/bin/gunicorn researchpipe_api.main:app \
+    -w 2 -k uvicorn.workers.UvicornWorker \
+    --bind 127.0.0.1:3725 \
+    --access-logfile - \
+    --timeout 120
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

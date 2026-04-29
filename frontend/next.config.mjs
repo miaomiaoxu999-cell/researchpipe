@@ -8,6 +8,11 @@ const nextConfig = {
   async rewrites() {
     return [
       { source: "/downloads/:path*", destination: `${BACKEND}/downloads/:path*` },
+      // Production: same-domain API access (frontend proxies /v1/* to backend).
+      // Avoids needing a separate api.rp.zgen.xin subdomain or CORS for the agent UI.
+      { source: "/v1/:path*", destination: `${BACKEND}/v1/:path*` },
+      { source: "/healthz", destination: `${BACKEND}/healthz` },
+      { source: "/openapi.json", destination: `${BACKEND}/openapi.json` },
     ];
   },
 };
