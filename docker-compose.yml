@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3725:3725"
+    env_file:
+      - ./backend/.env
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O- http://localhost:3725/healthz || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3726:3726"
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      - NEXT_PUBLIC_RP_BACKEND_URL=http://localhost:3725
+
+  reports:
+    image: python:3.12-slim
+    working_dir: /reports
+    volumes:
+      - ./eval/output:/reports
+    command: ["python3", "-m", "http.server", "3727", "--bind", "0.0.0.0"]
+    ports:
+      - "3727:3727"

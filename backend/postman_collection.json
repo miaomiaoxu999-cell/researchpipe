@@ -1,0 +1,2079 @@
+{
+  "info": {
+    "_postman_id": "96e765b2-6908-4b4a-9acd-2f35795516b9",
+    "name": "ResearchPipe API",
+    "description": "投研派 ResearchPipe — 投研垂类 API。 auto-generated from FastAPI OpenAPI spec.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://rp.zgen.xin"
+    },
+    {
+      "key": "api_key",
+      "value": "rp-..."
+    }
+  ],
+  "item": [
+    {
+      "name": "GET /",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": []
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /healthz",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/healthz",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "healthz"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/billing",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/billing",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "billing"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/companies/{cid}",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/companies/{cid}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "companies",
+            ":cid"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/companies/{cid}/deals",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/companies/{cid}/deals",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "companies",
+            ":cid",
+            "deals"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/companies/{cid}/founders",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/companies/{cid}/founders",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "companies",
+            ":cid",
+            "founders"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/companies/{cid}/news",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/companies/{cid}/news",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "companies",
+            ":cid",
+            "news"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/deals/{did}",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/deals/{did}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "deals",
+            ":did"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/deals/{did}/co_investors",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/deals/{did}/co_investors",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "deals",
+            ":did",
+            "co_investors"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/filings/{fid}",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/filings/{fid}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "filings",
+            ":fid"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/industries/{ind}/chain",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/industries/{ind}/chain",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "industries",
+            ":ind",
+            "chain"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/industries/{ind}/companies",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/industries/{ind}/companies",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "industries",
+            ":ind",
+            "companies"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/industries/{ind}/deals",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/industries/{ind}/deals",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "industries",
+            ":ind",
+            "deals"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/industries/{ind}/key_technologies",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/industries/{ind}/key_technologies",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "industries",
+            ":ind",
+            "key_technologies"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/industries/{ind}/policies",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/industries/{ind}/policies",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "industries",
+            ":ind",
+            "policies"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/industries/{ind}/tech_roadmap",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/industries/{ind}/tech_roadmap",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "industries",
+            ":ind",
+            "tech_roadmap"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/investors/{iid}",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/investors/{iid}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "investors",
+            ":iid"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/investors/{iid}/exits",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/investors/{iid}/exits",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "investors",
+            ":iid",
+            "exits"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/investors/{iid}/portfolio",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/investors/{iid}/portfolio",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "investors",
+            ":iid",
+            "portfolio"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/investors/{iid}/preferences",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/investors/{iid}/preferences",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "investors",
+            ":iid",
+            "preferences"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/jobs/{job_id}",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/jobs/{job_id}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "jobs",
+            ":job_id"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/me",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/me",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "me"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/usage",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/usage",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "usage"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "GET /v1/watch/{wid}/digest",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/watch/{wid}/digest",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "watch",
+            ":wid",
+            "digest"
+          ]
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/companies/search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/companies/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "companies",
+            "search"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/companies/{cid}/peers",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/companies/{cid}/peers",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "companies",
+            ":cid",
+            "peers"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/deals/overseas",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/deals/overseas",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "deals",
+            "overseas"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/deals/search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/deals/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "deals",
+            "search"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/deals/timeline",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/deals/timeline",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "deals",
+            "timeline"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/events/timeline",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/events/timeline",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "events",
+            "timeline"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/extract",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/extract",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "extract"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"string\",\n  \"include_images\": false,\n  \"extract_depth\": \"basic\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/extract/batch",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/extract/batch",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "extract",
+            "batch"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/extract/filing",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/extract/filing",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "extract",
+            "filing"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/extract/research",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/extract/research",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "extract",
+            "research"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"string\",\n  \"language\": \"zh\",\n  \"include_raw_content\": false,\n  \"model\": \"string\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/filings/search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/filings/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "filings",
+            "search"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/filings/{fid}/extract",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/filings/{fid}/extract",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "filings",
+            ":fid",
+            "extract"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/filings/{fid}/financials",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/filings/{fid}/financials",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "filings",
+            ":fid",
+            "financials"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/filings/{fid}/risks",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/filings/{fid}/risks",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "filings",
+            ":fid",
+            "risks"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/industries/search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/industries/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "industries",
+            "search"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/industries/{ind}/maturity",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/industries/{ind}/maturity",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "industries",
+            ":ind",
+            "maturity"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/investors/search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/investors/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "investors",
+            "search"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/news/recent",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/news/recent",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "news",
+            "recent"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/news/search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/news/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "news",
+            "search"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/research/company",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/research/company",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "research",
+            "company"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"input\": \"string\",\n  \"focus\": [\n    \"string\"\n  ],\n  \"model\": \"mini\",\n  \"output_schema\": {},\n  \"citation_format\": \"numbered\",\n  \"stream\": false,\n  \"depth\": \"summary\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/research/sector",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/research/sector",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "research",
+            "sector"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"input\": \"string\",\n  \"time_range\": \"24m\",\n  \"regions\": [\n    \"string\"\n  ],\n  \"model\": \"mini\",\n  \"output_schema\": {},\n  \"citation_format\": \"numbered\",\n  \"stream\": false,\n  \"depth\": \"summary\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/research/valuation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/research/valuation",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "research",
+            "valuation"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"input\": \"string\",\n  \"model\": \"mini\",\n  \"regions\": [\n    \"string\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/screen",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/screen",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "screen"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "search"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"string\",\n  \"type\": \"web\",\n  \"search_depth\": \"basic\",\n  \"include_answer\": false,\n  \"include_raw_content\": false,\n  \"max_results\": 20,\n  \"regions\": [\n    \"string\"\n  ],\n  \"languages\": [\n    \"string\"\n  ],\n  \"time_range\": \"string\",\n  \"source_types\": [\n    \"string\"\n  ],\n  \"multi_source\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/technologies/compare",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/technologies/compare",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "technologies",
+            "compare"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/valuations/compare",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/valuations/compare",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "valuations",
+            "compare"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/valuations/distribution",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/valuations/distribution",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "valuations",
+            "distribution"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/valuations/multiples",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/valuations/multiples",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "valuations",
+            "multiples"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/valuations/search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/valuations/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "valuations",
+            "search"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    },
+    {
+      "name": "POST /v1/watch/create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/watch/create",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "watch",
+            "create"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [],
+      "event": []
+    }
+  ]
+}

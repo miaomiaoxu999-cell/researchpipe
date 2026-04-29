@@ -1,0 +1,44 @@
+{
+  "name": "@researchpipe/mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server exposing ResearchPipe (investment research API) as 8 high-level tools to Claude Desktop / Cursor / Cline.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "researchpipe-mcp-server": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "investment-research",
+    "tavily",
+    "researchpipe",
+    "claude-desktop"
+  ],
+  "homepage": "https://rp.zgen.xin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/researchpipe/mcp-server"
+  }
+}

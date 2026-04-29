@@ -1,0 +1,14 @@
+/* Agent-page-specific styles (same as agent-ui/globals.css overlay) */
+
+.prose table { border-collapse: collapse; margin: 1em 0; font-size: 0.9em; }
+.prose th, .prose td { border: 1px solid #e2e8f0; padding: 6px 10px; }
+.prose th { background: #f8fafc; font-weight: 600; }
+
+.cite-pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.7em; min-width: 1.4em; height: 1.4em;
+  margin: 0 1px; padding: 0 4px; border-radius: 999px;
+  background: #1e40af; color: white; font-weight: 600;
+  text-decoration: none; transition: background 0.15s;
+}
+.cite-pill:hover { background: #1e3a8a; }

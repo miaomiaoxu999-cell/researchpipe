@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #051c2c;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans), Inter, "Source Han Sans SC", "Noto Sans SC", system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif), Georgia, "Noto Serif SC", serif;
+  letter-spacing: -0.02em;
+  color: #051c2c;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .container-page {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .hairline {
+    border-color: #E6E2DA;
+  }
+  .underline-accent {
+    background-image: linear-gradient(transparent calc(100% - 2px), #2251FF 2px);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+}
+
+@layer base {
+  ::selection {
+    background-color: #2251FF;
+    color: #ffffff;
+  }
+  /* Eyebrow caps label */
+  .eyebrow {
+    font-family: var(--font-sans), Inter, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #6B7280;
+  }
+}
+
+/* Scrollbar styling — minimal, McKinsey-ish */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #E6E2DA; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #C9C2B5; }
