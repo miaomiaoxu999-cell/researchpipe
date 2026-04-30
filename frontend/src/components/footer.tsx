@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
@@ -31,6 +34,15 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  // Immersive routes own their own viewport — skip the marketing footer.
+  if (
+    pathname?.startsWith("/agent") ||
+    pathname?.startsWith("/dashboard") ||
+    pathname?.startsWith("/admin")
+  ) {
+    return null;
+  }
   return (
     <footer className="bg-cream-200 border-t hairline mt-24 relative overflow-hidden">
       {/* CTA banner with landscape art */}

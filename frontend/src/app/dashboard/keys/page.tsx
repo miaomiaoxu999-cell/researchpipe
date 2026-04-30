@@ -44,10 +44,10 @@ export default function KeysPage() {
       <div className="card-cream p-7 mb-6">
         <div className="flex items-baseline justify-between mb-5">
           <div>
-            <h3 className="text-[16.5px] font-semibold text-ink-900">默认 Key</h3>
+            <h2 className="text-[16.5px] font-semibold text-ink-900">默认 Key</h2>
             <p className="text-[12.5px] text-muted mt-0.5">绑定到你的账户</p>
           </div>
-          <span className="inline-block px-3 py-0.5 rounded-full bg-accent-greenSoft text-accent-green text-[11.5px] font-medium">
+          <span className="inline-block px-3 py-0.5 rounded-full pill-green text-[11.5px] font-medium">
             {me?.plan ?? "—"}
           </span>
         </div>
@@ -81,9 +81,9 @@ export default function KeysPage() {
       </div>
 
       <div className="card-cream p-7 mb-6">
-        <h3 className="text-[16.5px] font-semibold text-ink-900 mb-3">
+        <h2 className="text-[16.5px] font-semibold text-ink-900 mb-3">
           生成新 Key
-        </h3>
+        </h2>
         <p className="text-[14px] text-ink/70 leading-relaxed mb-5">
           专业版 / 企业版可生成多个 Key（不同应用用不同 Key 方便追踪用量与限权）。
           目前默认 Key 已经够用。

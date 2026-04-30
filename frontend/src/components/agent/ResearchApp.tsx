@@ -86,11 +86,6 @@ export function ResearchApp({
   const [exportOpen, setExportOpen] = useState(false);
 
   const abortRef = useRef<AbortController | null>(null);
-  // Read streaming state from a ref so callbacks don't go stale
-  const streamingRef = useRef(false);
-  useEffect(() => {
-    streamingRef.current = isStreaming;
-  }, [isStreaming]);
 
   // Load key + history from localStorage on mount
   useEffect(() => {
@@ -137,7 +132,8 @@ export function ResearchApp({
   const runQuery = useCallback(
     async (q: string) => {
       const trimmed = q.trim();
-      if (!trimmed || streamingRef.current) return;
+      if (!trimmed) return;
+      // Abort any in-flight stream so back-to-back clicks always start fresh.
       abortRef.current?.abort();
       const ctrl = new AbortController();
       abortRef.current = ctrl;
@@ -328,8 +324,8 @@ export function ResearchApp({
           )}
         </aside>
 
-        {/* Main */}
-        <main className="flex-1 overflow-y-auto relative">
+        {/* Workspace */}
+        <section className="flex-1 overflow-y-auto relative">
           {!submitted ? (
             <EmptyHero
               query={query}
@@ -337,7 +333,10 @@ export function ResearchApp({
               onSubmit={onSubmit}
               isStreaming={isStreaming}
               examples={EXAMPLES}
-              runExample={(q) => runQuery(q)}
+              runExample={(q) => {
+                abortRef.current?.abort();
+                runQuery(q);
+              }}
               model={model}
               setModel={setModel}
               apiKey={apiKey}
@@ -366,7 +365,7 @@ export function ResearchApp({
               onPrint={printPdf}
             />
           )}
-        </main>
+        </section>
       </div>
     </div>
   );
@@ -622,7 +621,7 @@ function ResearchView({
               </p>
             )}
           </div>
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 shrink-0 no-print">
             <button
               onClick={onNew}
               className="btn-ghost !py-2 !px-3 text-[12.5px]"

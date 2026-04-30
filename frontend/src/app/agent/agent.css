@@ -66,14 +66,17 @@
   .sidebar,
   .hero-landscape::after,
   form.fixed,
-  details summary {
+  details,
+  .no-print {
     display: none !important;
   }
   body,
-  html {
+  html,
+  .hero-landscape {
     background: #fff !important;
   }
-  main {
+  main,
+  section {
     padding-top: 0 !important;
     margin-top: 0 !important;
   }
@@ -95,5 +98,8 @@
   .prose,
   .prose p {
     color: #1f1e1e !important;
+  }
+  .streaming-dot {
+    animation: none !important;
   }
 }
