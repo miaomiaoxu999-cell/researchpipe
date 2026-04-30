@@ -69,6 +69,7 @@ playground_shape_audit.md
 
 # Generated artifacts
 backend/static/downloads/*.zip
+backend/static/downloads/*.md
 backend/openapi.json
 frontend/public/openapi.json
 frontend/public/postman_collection.json

@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const NAV_LINKS = [
   { href: "/agent", label: "研究" },
+  { href: "/research", label: "深度研究" },
   { href: "/playground", label: "试用" },
   { href: "/docs", label: "使用指南" },
   { href: "/pricing", label: "定价" },

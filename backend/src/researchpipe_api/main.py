@@ -14,6 +14,7 @@ from .routes import admin as admin_routes
 from .routes import agent as agent_routes
 from .routes import corpus as corpus_routes
 from .routes import data as data_routes
+from .routes import deep_research as deep_research_routes
 from .routes import downloads as downloads_routes
 from .routes import search as search_routes
 from .routes import stub as stub_routes
@@ -102,6 +103,7 @@ async def unhandled(request: Request, exc: Exception):
 # FastAPI uses first-match for route resolution.
 app.include_router(admin_routes.router)
 app.include_router(agent_routes.router)
+app.include_router(deep_research_routes.router)
 app.include_router(downloads_routes.router)
 app.include_router(corpus_routes.router)
 app.include_router(search_routes.router)

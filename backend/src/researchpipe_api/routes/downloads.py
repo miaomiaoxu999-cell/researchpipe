@@ -1,7 +1,7 @@
-"""Static file serving for downloadable agent zip(s).
+"""Static file serving for downloadable artifacts.
 
-Path: GET /downloads/{filename}.zip → backend/static/downloads/{filename}.zip
-No auth — these are public artifacts intended for free download.
+Path: GET /downloads/{filename} → backend/static/downloads/{filename}
+No auth — these are public artifacts (agent zips, deep-research reports).
 """
 from __future__ import annotations
 
@@ -15,6 +15,8 @@ DOWNLOADS_DIR = ROOT / "static" / "downloads"
 
 router = APIRouter(prefix="/downloads", tags=["downloads"])
 
+ALLOWED_EXTS = {".zip": "application/zip", ".md": "text/markdown; charset=utf-8"}
+
 
 @router.get("/{filename}")
 async def get_download(filename: str):
@@ -27,8 +29,10 @@ async def get_download(filename: str):
         or filename.startswith(".")
     ):
         raise HTTPException(400, "invalid filename")
-    if not filename.endswith(".zip"):
-        raise HTTPException(400, "only .zip downloads served here")
+    suffix = "." + filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+    media_type = ALLOWED_EXTS.get(suffix)
+    if not media_type:
+        raise HTTPException(400, f"unsupported extension; allowed: {', '.join(ALLOWED_EXTS)}")
 
     fp = DOWNLOADS_DIR / filename
     # Resolve and confirm we stay under DOWNLOADS_DIR (catches any residual edge case).
@@ -42,7 +46,7 @@ async def get_download(filename: str):
 
     return FileResponse(
         resolved,
-        media_type="application/zip",
+        media_type=media_type,
         filename=filename,
         headers={"Cache-Control": "public, max-age=300"},
     )
