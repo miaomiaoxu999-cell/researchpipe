@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FEFCF5" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#FEF6E8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#F5DAB9" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9DBBC9" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#7C9BAE" stop-opacity="0.28"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A6B89F" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#809B82" stop-opacity="0.32"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C5A48A" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#A88466" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EFD8B5" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#E8C997" stop-opacity="0.40"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD8AC" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#FFD8AC" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#FFD8AC" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="watercolor">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="3"/>
+      <feDisplacementMap in="SourceGraphic" scale="6"/>
+    </filter>
+  </defs>
+  <!-- Sky band -->
+  <rect width="1600" height="720" fill="url(#sky)"/>
+  <!-- Diffuse sun -->
+  <circle cx="1100" cy="280" r="240" fill="url(#sun)"/>
+  <!-- Far mountain ridge -->
+  <path filter="url(#watercolor)" fill="url(#far)" d="M0,440 C 120,400 240,420 380,400 C 540,375 660,415 820,395 C 970,378 1100,410 1260,395 C 1410,382 1520,408 1600,400 L1600,720 L0,720 Z"/>
+  <!-- Mid mountain ridge -->
+  <path filter="url(#watercolor)" fill="url(#mid)" d="M0,500 C 140,468 280,492 460,470 C 640,448 780,500 940,478 C 1110,456 1240,490 1400,478 C 1500,470 1560,488 1600,485 L1600,720 L0,720 Z"/>
+  <!-- Near mountain ridge -->
+  <path filter="url(#watercolor)" fill="url(#near)" d="M0,560 C 180,530 340,560 520,540 C 700,520 880,565 1060,545 C 1240,525 1400,560 1600,548 L1600,720 L0,720 Z"/>
+  <!-- Foreground meadow -->
+  <path fill="url(#ground)" d="M0,610 C 220,590 460,615 700,602 C 940,590 1200,618 1600,606 L1600,720 L0,720 Z"/>
+  <!-- Ink-wash trees, scattered -->
+  <g opacity="0.30" fill="#3C3A39">
+    <ellipse cx="240" cy="615" rx="6" ry="14"/>
+    <ellipse cx="252" cy="618" rx="5" ry="11"/>
+    <ellipse cx="510" cy="608" rx="7" ry="16"/>
+    <ellipse cx="525" cy="612" rx="5" ry="12"/>
+    <ellipse cx="900" cy="618" rx="6" ry="13"/>
+    <ellipse cx="1180" cy="610" rx="8" ry="18"/>
+    <ellipse cx="1196" cy="614" rx="6" ry="13"/>
+    <ellipse cx="1450" cy="616" rx="6" ry="14"/>
+  </g>
+  <!-- Soft mist line (overlay) -->
+  <rect y="420" width="1600" height="120" fill="#FEFCF5" opacity="0.30"/>
+</svg>

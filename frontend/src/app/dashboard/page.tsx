@@ -36,82 +36,198 @@ export default function DashboardOverview() {
       .catch((e) => setError(String(e)));
   }, []);
 
+  const usedPct =
+    me && me.credits_limit > 0
+      ? Math.min(100, (me.credits_used_this_month / me.credits_limit) * 100)
+      : 0;
+
   return (
     <>
-      <h1 className="font-serif text-[44px] tracking-tight text-ink mb-2">Overview</h1>
-      <p className="text-[15px] text-muted mb-10">
-        实时数据来自 backend · `localhost:3725` · SQLite 持久化
+      <div className="mb-3">
+        <span className="eyebrow">/ 我的账户</span>
+      </div>
+      <h1 className="text-[36px] font-medium tracking-hero leading-tight text-ink-900 mb-2">
+        你好 👋
+      </h1>
+      <p className="text-[14.5px] text-muted mb-10">
+        这里是你的研究用量、账户和账单。
       </p>
 
       {error && (
-        <div className="border border-line bg-cream/60 p-4 mb-6 text-[13.5px] text-ink/80">
-          ⚠️ Backend 不可达：{error}
+        <div className="card-cream p-4 mb-6 text-[13.5px] text-amber-700">
+          ⚠️ 暂时连不上服务：{error}
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-px bg-line border border-line mb-12">
-        <Stat label="Plan" value={me?.plan ?? "—"} />
-        <Stat label="API key" value={me?.api_key_prefix ?? "—"} mono />
-        <Stat
-          label="Credits used this month"
-          value={me ? formatNumber(me.credits_used_this_month) : "—"}
-        />
-        <Stat
-          label="Credits limit"
-          value={me ? formatNumber(me.credits_limit) : "—"}
-        />
-        <Stat
-          label="Bill due"
-          value={billing ? `¥${billing.total_due_cny.toLocaleString()}` : "—"}
-        />
-        <Stat label="Resets on" value={me?.plan_resets_on ?? "—"} />
+      {/* Credits big card */}
+      <div className="card-cream p-7 mb-8">
+        <div className="flex items-baseline justify-between mb-4">
+          <p className="eyebrow">本月用量</p>
+          <Link
+            href="/dashboard/usage"
+            className="text-[13px] text-accent-link hover:underline"
+          >
+            详细图表 →
+          </Link>
+        </div>
+        <div className="flex items-baseline gap-3 mb-4">
+          <span className="text-[40px] font-medium tracking-hero text-ink-900">
+            {me ? formatNumber(me.credits_used_this_month) : "—"}
+          </span>
+          <span className="text-[15px] text-muted">
+            / {me ? formatNumber(me.credits_limit) : "—"} credits
+          </span>
+        </div>
+        <div className="h-2 bg-soft rounded-full overflow-hidden">
+          <div
+            className="h-full bg-accent-green transition-all"
+            style={{ width: `${usedPct}%` }}
+          />
+        </div>
+        <p className="mt-3 text-[12.5px] text-muted">
+          {me ? `下次重置：${me.plan_resets_on}` : ""} ·{" "}
+          <Link
+            href="/dashboard/billing"
+            className="text-accent-link hover:underline"
+          >
+            充值
+          </Link>{" "}
+          ·{" "}
+          <Link href="/pricing" className="text-accent-link hover:underline">
+            升级套餐
+          </Link>
+        </p>
       </div>
 
-      <h2 className="font-serif text-[24px] mb-4">Quick actions</h2>
-      <div className="grid grid-cols-2 gap-px bg-line border border-line">
+      {/* Account row */}
+      <div className="grid sm:grid-cols-2 gap-5 mb-10">
+        <Stat
+          label="当前套餐"
+          value={me?.plan ?? "—"}
+          accent="green"
+        />
+        <Stat
+          label="API Key"
+          value={me?.api_key_prefix ?? "—"}
+          mono
+        />
+        <Stat
+          label="本月应付"
+          value={billing ? `¥${billing.total_due_cny.toLocaleString()}` : "—"}
+        />
+        <Stat
+          label="账单月份"
+          value={billing?.month ?? "—"}
+        />
+      </div>
+
+      <h2 className="text-[20px] font-medium tracking-hero mb-4">
+        快捷操作
+      </h2>
+      <div className="grid sm:grid-cols-2 gap-3">
         <ActionCard
+          icon="🔑"
           href="/dashboard/keys"
-          title="Manage API keys"
-          desc="生成 / 撤销 keys、设置使用范围"
+          title="管理 API Keys"
+          desc="生成 / 撤销 keys，可绑定到不同应用"
         />
         <ActionCard
+          icon="📊"
           href="/dashboard/usage"
-          title="Usage trends"
-          desc="按端点 / 日期看调用量与 credits 消耗"
+          title="用量趋势"
+          desc="按日期、按端点查看消耗"
         />
         <ActionCard
+          icon="💳"
           href="/dashboard/billing"
-          title="Billing"
-          desc="月度账单 + 历史"
+          title="账单与充值"
+          desc="月度账单、充值、发票"
         />
         <ActionCard
+          icon="📜"
           href="/dashboard/logs"
-          title="Recent logs"
-          desc="最近 100 次调用 + Replay"
+          title="最近调用"
+          desc="最近 100 次调用日志"
         />
+      </div>
+
+      <div className="mt-12 card-tan p-5 flex items-start gap-4">
+        <span className="text-[22px]" aria-hidden>
+          🚀
+        </span>
+        <div className="flex-1">
+          <p className="text-[14px] font-medium text-ink-900">
+            还没问过问题？
+          </p>
+          <p className="mt-1 text-[13.5px] text-ink/70 leading-relaxed">
+            打开{" "}
+            <Link
+              href="/agent"
+              className="text-accent-link hover:underline"
+            >
+              研究界面
+            </Link>{" "}
+            ，问一句"半导体设备国产化最新进展"，30 秒后就有一份带引用的研究报告。
+          </p>
+        </div>
       </div>
     </>
   );
 }
 
-function Stat({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
+function Stat({
+  label,
+  value,
+  mono,
+  accent,
+}: {
+  label: string;
+  value: string;
+  mono?: boolean;
+  accent?: "green";
+}) {
   return (
-    <div className="bg-white p-6">
-      <div className="eyebrow">{label}</div>
-      <div className={`mt-2 font-serif text-[26px] tracking-tight text-ink ${mono ? "font-mono text-[16px]" : ""}`}>
+    <div className="card-cream p-5">
+      <div className="eyebrow mb-2">{label}</div>
+      <div
+        className={`text-[22px] font-medium tracking-hero ${
+          mono ? "font-mono text-[15px]" : ""
+        } ${accent === "green" ? "text-accent-green" : "text-ink-900"}`}
+      >
         {value}
       </div>
     </div>
   );
 }
 
-function ActionCard({ href, title, desc }: { href: string; title: string; desc: string }) {
+function ActionCard({
+  href,
+  title,
+  desc,
+  icon,
+}: {
+  href: string;
+  title: string;
+  desc: string;
+  icon: string;
+}) {
   return (
-    <Link href={href} className="bg-white p-6 hover:bg-cream transition-colors group">
-      <h3 className="font-serif text-[18px] font-semibold text-ink group-hover:text-accent transition-colors">
-        {title} →
-      </h3>
-      <p className="mt-2 text-[13.5px] text-ink/70 leading-relaxed">{desc}</p>
+    <Link
+      href={href}
+      className="card-cream p-5 hover:shadow-card transition-shadow flex items-start gap-3 group"
+    >
+      <span className="text-[22px] shrink-0" aria-hidden>
+        {icon}
+      </span>
+      <div>
+        <h3 className="text-[15px] font-semibold text-ink-900 group-hover:text-accent-blue transition-colors">
+          {title}
+          <span className="ml-1 inline-block transition-transform group-hover:translate-x-0.5">
+            →
+          </span>
+        </h3>
+        <p className="mt-1 text-[13px] text-ink/65 leading-relaxed">{desc}</p>
+      </div>
     </Link>
   );
 }
